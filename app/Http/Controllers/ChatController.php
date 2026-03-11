@@ -29,7 +29,7 @@ class ChatController extends Controller
         $conversation = $request->input('conversation', []);
 
         try {
-            $apiKey = env('ZAI_API_KEY');
+            $apiKey = "9f1006c7dc549358d33a929e9bcabbc.53QieaU3srSeCPBB";
 
             if (!$apiKey) {
                 return response()->json([
