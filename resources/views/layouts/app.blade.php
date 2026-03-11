@@ -766,6 +766,13 @@
                 <i class="fas fa-building"></i>
                 <span>SKPD</span>
             </a>
+
+            <!-- Chat AI -->
+            <a href="{{ route('chat.index') }}" class="menu-item {{ request()->routeIs('chat*') ? 'active' : '' }}">
+                <i class="fas fa-robot"></i>
+                <span>Chat AI</span>
+            </a>
+
             <!-- Upload Data -->
             <a href="#" class="menu-item {{ request()->routeIs('upload*') ? 'active open' : '' }}"
                 onclick="toggleSubmenu('upload-submenu')">

@@ -10,6 +10,7 @@ use App\Http\Controllers\RekeningKoranController;
 use App\Http\Controllers\AngkasController;
 use App\Http\Controllers\SpjFungsionalController;
 use App\Http\Controllers\SpjTransaksiController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TusUploadController;
 
 // TUS Upload Routes (no authentication required for file uploads)
@@ -38,6 +39,11 @@ Route::middleware(['auth'])->prefix('superadmin')->group(function () {
 
     // SKPD Routes
     Route::resource('skpd', SkpdController::class);
+
+    // Chat AI Routes
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
+    Route::post('/chat/clear', [ChatController::class, 'clearConversation'])->name('chat.clear');
 
     // Rekening Koran Routes
     Route::get('/rekening_koran/ocr/{rekening_koran_id}', [RekeningKoranController::class, 'ocr'])->name('rekening_koran.ocr');
