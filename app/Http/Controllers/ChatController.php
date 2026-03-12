@@ -29,11 +29,11 @@ class ChatController extends Controller
         $conversation = $request->input('conversation', []);
 
         try {
-            $apiKey = "9f1006c7dc549358d33a929e9bcabbc.53QieaU3srSeCPBB";
+            $apiKey = env('OPENAI_API_KEY');
 
             if (!$apiKey) {
                 return response()->json([
-                    'error' => 'API Key tidak ditemukan. Silakan konfigurasi ZAI_API_KEY di file .env'
+                    'error' => 'API Key tidak ditemukan. Silakan konfigurasi OPENAI_API_KEY di file .env'
                 ], 500);
             }
 
@@ -60,12 +60,12 @@ class ChatController extends Controller
                 'content' => $message
             ];
 
-            // Make API request to Zai (BigModel)
+            // Make API request to OpenAI
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $apiKey,
                 'Content-Type' => 'application/json',
-            ])->post('https://api.z.ai/api/paas/v4/chat/completions', [
-                'model' => 'glm-5',
+            ])->post('https://api.openai.com/v1/chat/completions', [
+                'model' => 'gpt-3.5-turbo',
                 'messages' => $messages,
                 'temperature' => 0.7,
                 'max_tokens' => 2000,
@@ -82,7 +82,7 @@ class ChatController extends Controller
             } else {
                 $errorData = $response->json();
                 return response()->json([
-                    'error' => 'Gagal menghubungi AI: ' . ($errorData['error']['message'] ?? 'Unknown error')
+                    'error' => 'Gagal menghubungi OpenAI: ' . ($errorData['error']['message'] ?? 'Unknown error')
                 ], $response->status());
             }
         } catch (\Exception $e) {
