@@ -14,12 +14,14 @@
         </div>
 
         <!-- Chat Container -->
-        <div class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden">
+        <div
+            class="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden">
             <!-- Chat Header -->
             <div class="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border-b border-slate-700/50 p-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                             <i class="fas fa-robot text-white"></i>
                         </div>
                         <div>
@@ -27,7 +29,8 @@
                             <p class="text-gray-400 text-sm">Online - Siap membantu</p>
                         </div>
                     </div>
-                    <button onclick="clearChat()" class="px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-gray-300 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm">
+                    <button onclick="clearChat()"
+                        class="px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-gray-300 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm">
                         <i class="fas fa-trash-alt"></i>
                         Hapus Percakapan
                     </button>
@@ -38,12 +41,14 @@
             <div id="chatMessages" class="h-[600px] overflow-y-auto p-6 space-y-4">
                 <!-- Welcome Message -->
                 <div class="flex gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0">
                         <i class="fas fa-robot text-white text-xs"></i>
                     </div>
                     <div class="flex-1">
                         <div class="bg-slate-700/50 rounded-2xl rounded-tl-none p-4 max-w-3xl">
-                            <p class="text-gray-200">Halo! Saya adalah asisten AI untuk SI SAKTI. Saya siap membantu Anda dengan:</p>
+                            <p class="text-gray-200">Halo! Saya adalah asisten AI untuk SI SAKTI. Saya siap membantu
+                                Anda dengan:</p>
                             <ul class="text-gray-300 mt-2 space-y-1 text-sm">
                                 <li>• Pertanyaan seputar audit ketataan instansi</li>
                                 <li>• Analisis keuangan dan anggaran</li>
@@ -61,26 +66,19 @@
             <div class="border-t border-slate-700/50 p-4 bg-slate-800/30">
                 <form id="chatForm" class="flex gap-3">
                     <div class="flex-1 relative">
-                        <textarea 
-                            id="messageInput" 
-                            rows="1" 
-                            placeholder="Ketik pesan Anda di sini..." 
+                        <textarea id="messageInput" rows="1" placeholder="Ketik pesan Anda di sini..."
                             class="w-full bg-slate-700/50 border border-slate-600/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none transition-all duration-300"
-                            onkeydown="handleKeyDown(event)"
-                        ></textarea>
+                            onkeydown="handleKeyDown(event)"></textarea>
                     </div>
-                    <button 
-                        type="submit" 
-                        id="sendButton"
-                        class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-indigo-500/25"
-                    >
+                    <button type="submit" id="sendButton"
+                        class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-indigo-500/25">
                         <i class="fas fa-paper-plane"></i>
                         <span>Kirim</span>
                     </button>
                 </form>
                 <p class="text-gray-500 text-xs mt-2 text-center">
                     <i class="fas fa-info-circle mr-1"></i>
-                    Asisten AI menggunakan Zai API untuk memberikan respons
+                    Asisten AI menggunakan OpenAI API untuk memberikan respons
                 </p>
             </div>
         </div>
@@ -120,6 +118,7 @@
             opacity: 0;
             transform: translateY(10px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -154,9 +153,13 @@
     }
 
     @keyframes typing {
-        0%, 60%, 100% {
+
+        0%,
+        60%,
+        100% {
             transform: translateY(0);
         }
+
         30% {
             transform: translateY(-10px);
         }
