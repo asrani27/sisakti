@@ -29,7 +29,7 @@ class ChatController extends Controller
         $conversation = $request->input('conversation', []);
 
         try {
-            $apiKey = env('OPENAI_API_KEY');
+            $apiKey = config('services.openai.key');
 
             if (!$apiKey) {
                 return response()->json([
