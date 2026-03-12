@@ -65,10 +65,11 @@ class ChatController extends Controller
                 'Authorization' => 'Bearer ' . $apiKey,
                 'Content-Type' => 'application/json',
             ])->post('https://api.openai.com/v1/chat/completions', [
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'gpt-5.1',
+                //'model' => 'gpt-3.5-turbo',
                 'messages' => $messages,
                 'temperature' => 0.7,
-                'max_tokens' => 2000,
+                'max_completion_tokens' => 2000,
             ]);
 
             if ($response->successful()) {
