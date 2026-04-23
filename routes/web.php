@@ -12,6 +12,8 @@ use App\Http\Controllers\SpjFungsionalController;
 use App\Http\Controllers\SpjTransaksiController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TusUploadController;
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\AnalisisController;
 
 // TUS Upload Routes (no authentication required for file uploads)
 Route::match(['get', 'post', 'patch', 'options', 'head'], '/tus/uploads/{uploadId?}', [TusUploadController::class, 'handle'])->name('tus.upload');
@@ -39,6 +41,11 @@ Route::middleware(['auth'])->prefix('superadmin')->group(function () {
 
     // SKPD Routes
     Route::resource('skpd', SkpdController::class);
+
+    // Anggota Routes
+    Route::resource('anggota', AnggotaController::class)->names('superadmin.anggota')->parameters(['anggota' => 'anggota']);
+    Route::post('anggota/{id}/create-user', [AnggotaController::class, 'createUser'])->name('superadmin.anggota.create-user');
+    Route::post('anggota/{id}/reset-password', [AnggotaController::class, 'resetPassword'])->name('superadmin.anggota.reset-password');
 
     // Chat AI Routes
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
@@ -100,11 +107,7 @@ Route::middleware(['auth'])->prefix('superadmin')->group(function () {
     });
 
     // Analisis Data Routes
-    Route::prefix('analisis')->group(function () {
-        Route::get('/terperinci', function () {
-            return view('superadmin.analisis.terperinci');
-        })->name('analisis.terperinci');
-    });
+    Route::resource('analisis', AnalisisController::class);
 
     // Laporan Routes
     Route::prefix('laporan')->group(function () {

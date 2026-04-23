@@ -4,6 +4,12 @@
     <span>Dashboard</span>
 </a>
 
+<!-- Management Anggota -->
+<a href="{{ route('superadmin.anggota.index') }}" class="menu-item {{ request()->routeIs('superadmin.anggota*') ? 'active' : '' }}">
+    <i class="fas fa-users"></i>
+    <span>Management Anggota</span>
+</a>
+
 <!-- Gudang Aturan -->
 {{-- <a href="{{ route('aturan.index') }}" class="menu-item {{ request()->routeIs('aturan*') ? 'active' : '' }}">
     <i class="fas fa-book"></i>
